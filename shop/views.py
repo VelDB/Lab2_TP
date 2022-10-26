@@ -16,6 +16,13 @@ class PurchaseCreate(CreateView):
     fields = ['product', 'person', 'address']
 
     def form_valid(self, form):
-        self.object = form.save()
-        return HttpResponse(f'Спасибо за покупку, {self.object.person}!')
+        purchase = form.save(commit=False)
+        product = purchase.product
+        if product.amount == 0:
+            return HttpResponse("<h1>400 Bad Request</h1>"
+                                "<br>Продукта нет в наличии!")
+        product.amount -= 1
+        product.save()
+        purchase.save()
+        return HttpResponse(f'Спасибо за покупку, {purchase.person}!')
 
