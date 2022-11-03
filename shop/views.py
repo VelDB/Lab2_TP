@@ -20,7 +20,7 @@ class PurchaseCreate(CreateView):
         product = purchase.product
         if product.amount == 0:
             return HttpResponse("<h1>400 Bad Request</h1>"
-                                "<br>Продукта нет в наличии!")
+                                "<br>Продукта нет в наличии!", status=400)
         product.amount -= 1
         product.save()
         purchase.save()
