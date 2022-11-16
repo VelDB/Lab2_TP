@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'tplab2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# Подключения базы данных sqlite3 и назначение файла для БД, где она будет сохраняться
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

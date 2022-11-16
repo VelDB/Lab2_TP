@@ -14,11 +14,13 @@
                 <td><p>В наличии</p></td>
                 <td></td>
             </tr>
+            <!-- Добавление строчек товаров в таблицу -->
             {% for p in products %}
                 <tr>
                     <td><p>{{ p.name }}</p></td>
                     <td><p>{{ p.price }}</p></td>
                     <td><p>{{ p.amount }}</p></td>
+                    <!-- Выбор текста по наличию товара в магазине -->
                     {% if p.amount > 0 %}
                         <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
                     {% else %}
